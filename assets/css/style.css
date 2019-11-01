@@ -15,6 +15,15 @@ body {
 .button {
   margin: 10px;
 }
+
+.spotify-button,
+.spotify-button:focus {
+  background-color: #000;
+  opacity: 0.7;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
 .section {
   padding: 10px 24px;
 }
@@ -22,6 +31,8 @@ body {
   background-color: #000;
   opacity: 0.7;
   margin-bottom: 50px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 .billboard {
   font-family: "Josefin Sans", sans-serif;
@@ -64,7 +75,7 @@ select {
   z-index: 100;
 }
 .date {
-  margin-top: 75px;
+  padding-top: 85px;
 }
 .cover {
   width: 300px;
@@ -72,6 +83,8 @@ select {
 }
 .table {
   background-color: #000;
+  opacity: 0.7;
+  margin-bottom: 2em;
 }
 th,
 .song,
@@ -80,7 +93,7 @@ th,
 }
 .cover {
   width: 90%;
-  margin: auto;
+  margin: 0;
   border-radius: 5px;
 }
 footer {
@@ -92,12 +105,31 @@ footer {
   width: 100%;
   background-color: #000;
   opacity: 0.7;
+  z-index: 100;
 }
 
-/* @media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .cover {
     position: fixed;
-    right: 50px;
-    top: 100px;
+    left: 50px;
+    top: 160px;
+    width: 40%;
   }
-} */
+  .date {
+    position: fixed;
+    top: 20px;
+    z-index: 100;
+  }
+  .save {
+    position: fixed;
+    top: 160px;
+    right: 0;
+    width: 50%;
+    z-index: 100;
+  }
+  .table {
+    margin: 250px 0 0;
+    z-index: 0;
+    margin-bottom: 2em;
+  }
+}
