@@ -1,37 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.js"
-      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <script type="text/javascript" src="index.js"></script>
-    <title>Billboard-Top-100 Spotify Playlist Generator</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+<html>
 
-  <body>
-    <input type="date" />
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Billboard Top 100 Spotify Playlist Generator</title>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="~bulma-calendar/dist/js/bulma-calendar.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Marvel:700|Michroma|Josefin+Sans:700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+  <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body id="index">
+  <div class="block">
+    <a href="#" class="button is-dark is-large"><i class="fab fa-spotify"></i>Connect with
+      Spotify</a>
+  </div>
+  <section class="section">
+    <h1 class="title is-1 has-text-white">
+      <span class="billboard">billboard</span>
+      <span class="top100">Top&nbsp;100</span>
+    </h1>
+    <h2 class="title is-3 has-text-white">Spotify Playlist Generator</h2>
+    <div class="container">
+      <div class="block">
+        <div class="box">
+          <h3 class="title is-3 has-text-white">
+            Welcome to the Billboard Top 100 Spotify Playlist Generator!
+          </h3>
+          <p class="content is-medium has-text-white">
+            What was that song that was so popular your senior year of high
+            school? How about that track that reverberated in the clubs two
+            summers ago? Drawing a blank? Not anymore! Re-live your life's
+            soundtrack! Just pick a date below and the generator will create a
+            playlist containing the Billboard Top 100 for the week you have
+            selected.
+          </p>
+          <div class="block">
+            <h3 class="title is-3 has-text-white">Select a Date:</h3>
+            <input type="date" />
+            <label for="genre" class="label is-large has-text-white">Select a Genre:</label>
+            <form action="#">
+              <select name="charts">
+                <option value="hot">The Hot 100</option>
+                <option value="artist">Artist 100</option>
+                <option value="pop">Pop</option>
+                <option value="hiphop">R&B/Hip-Hop</option>
+                <option value="rock">Rock</option>
+                <option value="latin">Latin</option>
+                <option value="country">Country</option>
+                <option value="electronic">Dance/Electronic</option>
+              </select>
+              <input type="submit" />
+            </form>
+          </div>
+          <!-- <a href="#" class="button is-light">Submit</a> -->
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <footer class="has-text-centered">&copy; 2019 Team Turquoise</footer>
+</body>
+
 </html>
