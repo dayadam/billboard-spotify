@@ -1,0 +1,135 @@
+/* General Styling */
+body {
+  font-family: "Marvel", sans-serif;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: #000;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+}
+#index {
+  background-image: url("../images/dalibor-bosnjakovic-Zfg9GZ7yLcU-unsplash.jpg");
+  min-height: 100vh;
+}
+.button {
+  margin: 10px;
+}
+
+.spotify-button,
+.spotify-button:focus {
+  background-color: #000;
+  opacity: 0.7;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.section {
+  padding: 10px 24px;
+}
+.box {
+  background-color: #000;
+  opacity: 0.7;
+  margin-bottom: 50px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.billboard {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: -6px;
+  font-size: 70px;
+}
+.top100 {
+  font-family: "Michroma", sans-serif;
+}
+h2 {
+  font-family: "Michroma", sans-serif;
+}
+input {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+select {
+  background-color: #fff;
+}
+.field {
+  margin-top: 10px;
+}
+
+/* Results Page  */
+#results {
+  background-image: url("../images/tobias-van-schneider-bQ-XtB9IWmo-unsplash.jpg");
+  background-color: #000;
+}
+.header {
+  background-color: #000;
+  opacity: 0.7;
+  width: 100%;
+  font-family: "Michroma", sans-serif;
+  position: fixed;
+  top: 0;
+  padding: 15px;
+  border-bottom: 2px solid #fff;
+  z-index: 100;
+}
+.date {
+  padding-top: 85px;
+}
+.cover {
+  width: 300px;
+  border-radius: 4px;
+}
+.table {
+  background-color: #000;
+  opacity: 0.7;
+  margin-bottom: 2em;
+}
+th,
+.song,
+.artist {
+  color: #fff;
+}
+.cover {
+  width: 90%;
+  margin: 0;
+  border-radius: 5px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  border-top: 2px solid #fff;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.7;
+  z-index: 100;
+}
+
+@media screen and (min-width: 768px) {
+  .cover {
+    position: fixed;
+    left: 50px;
+    top: 160px;
+    width: 40%;
+  }
+  .date {
+    position: fixed;
+    top: 20px;
+    z-index: 100;
+  }
+  .save {
+    position: fixed;
+    top: 160px;
+    right: 0;
+    width: 50%;
+    z-index: 100;
+  }
+  .table {
+    margin: 250px 0 0;
+    z-index: 0;
+    margin-bottom: 2em;
+  }
+}
