@@ -60,13 +60,14 @@ $(document).ready(function () {
             }
         });
     };
-
+    const playlistName = $("option:selected").val();
+    
     function postPlaylist() {
         return $.ajax({
             url: `https://api.spotify.com/v1/users/${currentUserId}/playlists`,
             type: "POST",
             data: JSON.stringify({
-                "name": "ttName"
+                "name": playlistName
             }),
             dataType: 'json',
             contentType: 'application/json',
