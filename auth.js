@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     let currentUserId;
     let playlistId;
+    //let songsList;
 
     accessTokenCheckAndStore();
 
@@ -15,7 +16,23 @@ $(document).ready(function () {
             .then(billboardSearch)
             .then(createSongIdList)
             .then(createPlaylistAddJSON)
-            .then(addTracks)
+            .then(addTracks);
+        
+
+/*         $('.index').css({ 'display': 'none' });
+        $('#results').css({ 'visibility': 'visible' });
+        console.log(songsList);
+
+        $(".cover").attr("src", songsList[0].cover);
+
+        //$(".dateChanged").text(userDate);
+
+
+        for (i = 0; i < 100; i++) {
+            $("#resultsTable").append('<tr><td class="song">' + songsList[i].title + '</td>' + '<td class="song">' + songsList[i].artist + '</td></tr>');
+
+        }; */
+
     });
 
     function accessTokenCheckAndStore() {
@@ -70,7 +87,7 @@ $(document).ready(function () {
             url: queryURL,
             type: "GET",
             success: function (response) {
-                return response.songs;
+                songsList = response.songs;
             }
         });
     };
@@ -121,8 +138,10 @@ $(document).ready(function () {
         });
     };
 
-    $('#submit').on('click', function () {
-        event.preventDefault();
+    // $('#submit').on('click', function () {
+    //     event.preventDefault();
+
+    /* function cssPopulate() {
 
         $('.index').css({ 'display': 'none' });
         $('#results').css({ 'visibility': 'visible' });
@@ -130,16 +149,14 @@ $(document).ready(function () {
 
         $(".cover").attr("src", songsList[0].cover);
 
-        $(".dateChanged").text(userDate);
+        //$(".dateChanged").text(userDate);
 
 
         for (i = 0; i < 100; i++) {
             $("#resultsTable").append('<tr><td class="song">' + songsList[i].title + '</td>' + '<td class="song">' + songsList[i].artist + '</td></tr>');
 
         };
-        for (i = 0; i < 100; i++) {
-            console.log("hi");
-            //$("#resultsTable").append("<tr><td> hi </td></tr>");
-        }
-    });
+
+    }
+ */
 });
