@@ -4,18 +4,30 @@ body {
   background-repeat: no-repeat;
   background-size: auto;
   background-color: #000;
-  width: 100%;
+  /* width: 100%; */
   color: #ffffff;
   text-align: center;
-}
-#index {
   background-image: url("../images/dalibor-bosnjakovic-Zfg9GZ7yLcU-unsplash.jpg");
   min-height: 100vh;
 }
+/* #index {
+  background-image: url("../images/dalibor-bosnjakovic-Zfg9GZ7yLcU-unsplash.jpg");
+  min-height: 100vh; 
+} */
+
+
+/* Show / Hide */
+.index {
+  /* display: none; */
+}
+#results {
+  visibility: hidden;
+}
+
+/* Other styles */
 .button {
   margin: 10px;
 }
-
 .spotify-button,
 .spotify-button:focus {
   background-color: #000;
@@ -23,8 +35,7 @@ body {
   border: 2px solid #fff;
   color: #fff;
 }
-
-.section {
+.index {
   padding: 10px 24px;
 }
 .box {
@@ -59,10 +70,10 @@ select {
 }
 
 /* Results Page  */
-#results {
+/* #results {
   background-image: url("../images/tobias-van-schneider-bQ-XtB9IWmo-unsplash.jpg");
   background-color: #000;
-}
+} */
 .header {
   background-color: #000;
   opacity: 0.7;
@@ -74,8 +85,9 @@ select {
   border-bottom: 2px solid #fff;
   z-index: 100;
 }
-.date {
+.date-container {
   padding-top: 85px;
+  padding-bottom: 10px;
 }
 .cover {
   width: 300px;
@@ -84,12 +96,33 @@ select {
 .table {
   background-color: #000;
   opacity: 0.7;
-  margin-bottom: 2em;
+  position: fixed;
+  top: 250px;
+  right 0;
+}
+thead {
+  text-align: center;
+}
+tbody {
+  display: block;
+  overflow: auto;
+  height: 600px;
+  width: 100%;
 }
 th,
 .song,
 .artist {
   color: #fff;
+}
+tr {
+  width: 100%;
+}
+td:first-child {
+  width: 30%;
+}
+.song,
+.artist {
+  width: 50%;
 }
 .cover {
   width: 90%;
@@ -108,14 +141,15 @@ footer {
   z-index: 100;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .cover {
     position: fixed;
     left: 50px;
     top: 160px;
     width: 40%;
+    margin-top: 10px;
   }
-  .date {
+  .date-container {
     position: fixed;
     top: 20px;
     z-index: 100;
@@ -127,8 +161,8 @@ footer {
     width: 50%;
     z-index: 100;
   }
-  .table {
-    margin: 250px 0 0;
+  .resultsTable {
+    margin: 240px 0 0;
     z-index: 0;
     margin-bottom: 2em;
   }

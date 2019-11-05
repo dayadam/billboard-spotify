@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Billboard Top 100 Spotify Playlist Generator</title>
 
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
 
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Marvel:700|Michroma|Josefin+Sans:700&display=swap"
@@ -19,55 +17,90 @@
   <script type="text/javascript" src="auth.js"></script>
 </head>
 
-<body id="index">
-  <div class="block level-right">
-    <a href="#" class="button is-large spotify-button"><i class="fab fa-spotify"></i>Connect with
-      Spotify</a>
-  </div>
-  <section class="section">
-    <h1 class="title is-1 has-text-white is-marginless">
-      <span class="billboard">billboard</span>
-      <span class="top100">Top&nbsp;100</span>
-    </h1>
-    <h2 class="title is-3 has-text-white">Spotify Playlist Generator</h2>
-    <div class="container">
-      <div class="block">
-        <div class="box main">
-          <h3 class="title is-3 has-text-white">
-            Welcome to the Billboard Top 100 Spotify Playlist Generator!
-          </h3>
-          <p class="content is-medium has-text-white">
-            What was that song that was so popular your senior year of high
-            school? How about that track that reverberated in the clubs two
-            summers ago? Drawing a blank? Not anymore! Re-live your life's
-            soundtrack! Just pick a date below and the generator will create a
-            playlist containing the Billboard Top 100 for the week you have
-            selected.
-          </p>
-          <div class="block">
-            <h3 class="title is-3 has-text-white">Select a Date:</h3>
-            <input class="user-date" type="date" />
-            <label for="genre" class="label is-large has-text-white">Select a Genre:</label>
-            <form action="#">
-              <select name="charts">
-                <option value="hot-100">The Hot 100</option>
-                <option value="artist-100">Artist 100</option>
-                <option value="pop-songs">Pop</option>
-                <option value="r-b-hip-hop-songs">R&B/Hip-Hop</option>
-                <option value="rock-songs">Rock</option>
-                <option value="latin-songs">Latin</option>
-                <option value="country-songs">Country</option>
-                <option value="dance-electronic-songs">Dance/Electronic</option>
-              </select>
-              <input id="submit" type="submit" />
-            </form>
+<body>
+  <section>
+    <div class="block level-right">
+      <a href="http://accounts.spotify.com/authorize?client_id=603ba6b52bf24da0a23b5db603d64c25&redirect_uri=http://127.0.0.1:5500/&scope=playlist-modify-public,playlist-modify-private,user-read-private,user-read-email&response_type=token"
+        id="connect" class="index button is-large spotify-button"><i class="fab fa-spotify"></i>Connect with
+        Spotify</a>
+    </div>
+    <section class="index">
+      <h1 class="title is-1 has-text-white is-marginless">
+        <span class="billboard">billboard</span>
+        <span class="top100">Top&nbsp;100</span>
+      </h1>
+      <h2 class="title is-3 has-text-white">Spotify Playlist Generator</h2>
+      <div class="container">
+        <div class="block">
+          <div class="box main">
+            <h3 class="title is-3 has-text-white">
+              Welcome to the Billboard Top 100 Spotify Playlist Generator!
+            </h3>
+            <p class="content is-medium has-text-white">
+              What was that song that was so popular your senior year of high
+              school? How about that track that reverberated in the clubs two
+              summers ago? Drawing a blank? Not anymore! Re-live your life's
+              soundtrack! Just pick a date below and the generator will create a
+              playlist containing the Billboard Top 100 for the week you have
+              selected.
+            </p>
+            <div class="block">
+              <h3 class="title is-3 has-text-white">Select a Date:</h3>
+              <input id="userDate" type="date" />
+              <label for="genre" class="label is-large has-text-white">Select a Genre:</label>
+              <form action="#">
+                <select name="charts">
+                  <option value="hot-100">The Hot 100</option>
+                  <option value="artist-100">Artist 100</option>
+                  <option value="pop-songs">Pop</option>
+                  <option value="r-b-hip-hop-songs">R&B/Hip-Hop</option>
+                  <option value="rock-songs">Rock</option>
+                  <option value="latin-songs">Latin</option>
+                  <option value="country-songs">Country</option>
+                  <option value="dance-electronic-songs">Dance/Electronic</option>
+                </select>
+                <input id="submit" type="submit" />
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
+    </section>
   </section>
+  </div>
   <footer class="has-text-centered">&copy; 2019 Team Turquoise</footer>
+  <section id="results">
+    <header>
+      <h1 class="header title is-2 has-text-white">Your Playlist</h1>
+    </header>
+    <div class="block is-marginless">
+      <div class="columns">
+        <div class="column is-full date-container">
+          <h3 id="date" class="title is-2 has-text-white tableHead is-marginless"><span class="dateChanged">October 30,
+              2019</span></h2>
+        </div>
+        <a href="http://accounts.spotify.com/authorize?client_id=603ba6b52bf24da0a23b5db603d64c25&redirect_uri=http://127.0.0.1:5500/&scope=playlist-modify-public,playlist-modify-private,user-read-private,user-read-email&response_type=token"
+          class="button is-large spotify-button save is-marginless"><i class="fab fa-spotify"></i>Save
+          Playlist on Spotify</a>
+      </div>
+    </div>
+    <div class="block">
+      <div class="columns">
+        <div class="column is-half">
+          <img class="cover" />
+        </div>
+        <div class="column is-half is-paddingless">
+          <table class="table is-fullwidth">
+            <tbody id="resultsTable" class="is-fullwidth is-marginless">
+
+            </tbody>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+  <!-- <footer>&copy; 2019 Team Turquoise</footer> -->
 </body>
 
 </html>
