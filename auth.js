@@ -1,4 +1,4 @@
-https://accounts.spotify.com/authorize?client_id=603ba6b52bf24da0a23b5db603d64c25&redirect_uri=http://localhost/billboard-spotify/&scope=playlist-modify-public,playlist-modify-private,user-read-private,user-read-email&response_type=token
+https://accounts.spotify.com/authorize?client_id=603ba6b52bf24da0a23b5db603d64c25&redirect_uri=http://127.0.0.1:5500/&scope=playlist-modify-public,playlist-modify-private,user-read-private,user-read-email&response_type=token
 
 $(document).ready(function () {
 
@@ -6,12 +6,17 @@ $(document).ready(function () {
     let playlistId;
 
     accessTokenCheckAndStore();
+
+    $("#submit").on("click", function () {
+        event.preventDefault();
+
     getUserId()
         .then(postPlaylist)
         .then(billboardSearch)
         .then(createSongIdList)
         .then(createPlaylistAddJSON)
         .then(addTracks)
+    });
 
     function accessTokenCheckAndStore() {
         const hashVar = window.location.hash;
@@ -55,31 +60,66 @@ $(document).ready(function () {
         });
     };
 
+    //$("#submit").on("click", function () {
+/*         event.preventDefault();
+        
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+
+        });
+    }); */
+
+    $<img src= 
+    songslist 
+
     function billboardSearch() {
+        const genre = $("option:selected").val();
+        console.log(genre);
+        const userDate = $("input").val();
+        console.log(userDate);
+        queryURL = "https://billboardapi.jacoblamont.now.sh/api/songs?chartName=" + genre + "&date=" + userDate
         return $.ajax({
-            url: "https://billboardapi.jacoblamont.now.sh/api/songs?chartName=hot-100&date=2007-01-01",
+            url: queryURL,
             type: "GET",
             success: function (response) {
                 return response.songs;
             }
         });
     };
-
+    //"https://api.spotify.com/v1/search?query=Fergalicious%2BFergie&type=track&offset=0&limit=20"
+    //`https://api.spotify.com/v1/search?q=${query}&type=track`
     async function createSongIdList(songsList) {
-        const songsIdList = await Promise.all(songsList.songs.map(function(el) {
-            const query = encodeURIComponent(`${el.title}+${el.artist}`)
+        
+        const songsIdList = await Promise.all(songsList.songs.map(function (song, i) {
+            const title = encodeURI(song.title);
+            //const artist = song.artist.split(" Featuring ").map(artist => encodeURI(artist)).join(", ");
+            const artist = song.artist.replace(/\s:?Featuring|(?<!Nas)\sX/g, ",")
+            //const artist = song.artist.replace(' Featuring', ',')
+            const url = `https://api.spotify.com/v1/search?q=${title}%20${artist}&type=track`;
+
             return $.ajax({
-                url: `https://api.spotify.com/v1/search?q=${query}&type=track`,
+                url: url, 
                 type: "GET",
-                beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken.access_token); }//could add in validation -- if listing has album, artist, song, year, etc
+                headers: {
+                    Authorization: 'Bearer ' + accessToken.access_token
+                }
             }).then(function (answer) {
                 if (answer.tracks.items.length != 0) {
-                    return answer.tracks.items[0].id; //only taking top search result
+                    return answer.tracks.items[0].id;
+                } else {
+                    console.log(`Song URL: ${url}.
+Song Number: ${i+1}
+Song Title: ${song.title}
+Song Artist: ${song.artist}`);
                 }
             });
         }));
 
-        return songsIdList.filter(function(el){ return el !== undefined})
+        return songsIdList.filter(function (el) { return el !== undefined })
 
         // const promises = songsList.songs.map(el => searchSong(encodeURIComponent(el.title), encodeURIComponent(el.artist)))
         // await Promise.all(promises)
@@ -92,17 +132,17 @@ $(document).ready(function () {
         // return promises
     };
 
-/*     function searchSong(track, artist) {
-        $.ajax({
-            url: `https://api.spotify.com/v1/search?q=${track}+${artist}&type=track`,
-            type: "GET",
-            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken.access_token); }//could add in validation -- if listing has album, artist, song, year, etc
-        }).then(function (answer) {
-            if (answer.tracks.items.length != 0) {
-                return answer.tracks.items[0].id; //only taking top search result
-            };
-        });
-    }; */
+    /*     function searchSong(track, artist) {
+            $.ajax({
+                url: `https://api.spotify.com/v1/search?q=${track}+${artist}&type=track`,
+                type: "GET",
+                beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken.access_token); }//could add in validation -- if listing has album, artist, song, year, etc
+            }).then(function (answer) {
+                if (answer.tracks.items.length != 0) {
+                    return answer.tracks.items[0].id; //only taking top search result
+                };
+            });
+        }; */
 
     function createPlaylistAddJSON(songsIdList) {
         console.log(songsIdList)
