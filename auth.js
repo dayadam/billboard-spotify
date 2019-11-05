@@ -87,7 +87,7 @@ $(document).ready(function () {
             url: queryURL,
             type: "GET",
             success: function (response) {
-                songsList = response.songs;
+                //songsList = response.songs;
             }
         });
     };
