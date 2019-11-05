@@ -6,11 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Billboard Top 100 Spotify Playlist Generator</title>
 
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Marvel:700|Michroma|Josefin+Sans:700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <script type="text/javascript" src="auth.js"></script>
 </head>
 
 <body id="index">
@@ -40,18 +46,18 @@
           </p>
           <div class="block">
             <h3 class="title is-3 has-text-white">Select a Date:</h3>
-            <input type="date" />
+            <input class="user-date" type="date" />
             <label for="genre" class="label is-large has-text-white">Select a Genre:</label>
             <form action="#">
               <select name="charts">
-                <option value="hot">The Hot 100</option>
-                <option value="artist">Artist 100</option>
-                <option value="pop">Pop</option>
-                <option value="hiphop">R&B/Hip-Hop</option>
-                <option value="rock">Rock</option>
-                <option value="latin">Latin</option>
-                <option value="country">Country</option>
-                <option value="electronic">Dance/Electronic</option>
+                <option value="hot-100">The Hot 100</option>
+                <option value="artist-100">Artist 100</option>
+                <option value="pop-songs">Pop</option>
+                <option value="r-b-hip-hop-songs">R&B/Hip-Hop</option>
+                <option value="rock-songs">Rock</option>
+                <option value="latin-songs">Latin</option>
+                <option value="country-songs">Country</option>
+                <option value="dance-electronic-songs">Dance/Electronic</option>
               </select>
               <input id="submit" type="submit" />
             </form>
