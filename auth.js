@@ -1,6 +1,3 @@
-
-  
-=======
 https://accounts.spotify.com/authorize?client_id=603ba6b52bf24da0a23b5db603d64c25&redirect_uri=http://127.0.0.1:5500/&scope=playlist-modify-public,playlist-modify-private,user-read-private,user-read-email&response_type=token
 
 $(document).ready(function () {
@@ -180,27 +177,27 @@ Song Artist: ${song.artist}`);
         });
     };
 
-  $('#submit').on('click', function () {
-    event.preventDefault();
+    $('#submit').on('click', function () {
+        event.preventDefault();
 
-    $('.index').css({ 'display': 'none' });
-    $('#results').css({ 'visibility': 'visible' });
-    console.log(songsList);
+        $('.index').css({ 'display': 'none' });
+        $('#results').css({ 'visibility': 'visible' });
+        console.log(songsList);
 
-    $(".cover").attr("src", songsList[0].cover);
+        $(".cover").attr("src", songsList[0].cover);
 
-    $(".dateChanged").text(userDate);
-
-
+        $(".dateChanged").text(userDate);
 
 
-    // console.log("switched")
-    for (i = 0; i < 100; i++) {
-      $("#resultsTable").append('<tr><td class="song">' + songsList[i].title + '</td>' + '<td class="song">' + songsList[i].artist + '</td></tr>');
 
-    };
-    for (i = 0; i < 100; i++) {
-      console.log("hi");
-      //$("#resultsTable").append("<tr><td> hi </td></tr>");
-    };
-});
+
+        // console.log("switched")
+        for (i = 0; i < 100; i++) {
+            $("#resultsTable").append('<tr><td class="song">' + songsList[i].title + '</td>' + '<td class="song">' + songsList[i].artist + '</td></tr>');
+
+        };
+        for (i = 0; i < 100; i++) {
+            console.log("hi");
+            //$("#resultsTable").append("<tr><td> hi </td></tr>");
+        };
+    });
