@@ -1,4 +1,4 @@
-https://accounts.spotify.com/authorize?client_id=603ba6b52bf24da0a23b5db603d64c25&redirect_uri=http://127.0.0.1:5500/&scope=playlist-modify-public,playlist-modify-private,user-read-private,user-read-email&response_type=token
+// https://accounts.spotify.com/authorize?client_id=603ba6b52bf24da0a23b5db603d64c25&redirect_uri=http://127.0.0.1:5500/&scope=playlist-modify-public,playlist-modify-private,user-read-private,user-read-email&response_type=token
 
 $(document).ready(function () {
 
@@ -60,20 +60,6 @@ $(document).ready(function () {
         });
     };
 
-    //$("#submit").on("click", function () {
-    /*         event.preventDefault();
-            
-    
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response);
-    
-            });
-        }); */
-
-
     function billboardSearch() {
         const genre = $("option:selected").val();
         console.log(genre);
@@ -88,8 +74,7 @@ $(document).ready(function () {
             }
         });
     };
-    //"https://api.spotify.com/v1/search?query=Fergalicious%2BFergie&type=track&offset=0&limit=20"
-    //`https://api.spotify.com/v1/search?q=${query}&type=track`
+
     async function createSongIdList(songsList) {
 
         const songsIdList = await Promise.all(songsList.songs.map(function (song, i) {
@@ -108,54 +93,13 @@ $(document).ready(function () {
             }).then(function (answer) {
                 if (answer.tracks.items.length != 0) {
                     return answer.tracks.items[0].id;
-                } else {
-                    console.log(`Song URL: ${url}.
-Song Number: ${i + 1}
-Song Title: ${song.title}
-Song Artist: ${song.artist}`);
                 }
             });
         }));
-
         return songsIdList.filter(function (el) { return el !== undefined })
-
-        // const promises = songsList.songs.map(el => searchSong(encodeURIComponent(el.title), encodeURIComponent(el.artist)))
-        // await Promise.all(promises)
-
-        // for (i = 0; i < songsList.length; i++) {
-        //     const track = encodeURIComponent(songsList[i].title);
-        //     const artist = encodeURIComponent(songsList[i].artist);
-        //     songsIdList.push(searchSong(track, artist))
-        // };
-        // return promises
     };
 
-    /*     function searchSong(track, artist) {
-            $.ajax({
-                url: `https://api.spotify.com/v1/search?q=${track}+${artist}&type=track`,
-                type: "GET",
-                beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken.access_token); }//could add in validation -- if listing has album, artist, song, year, etc
-            }).then(function (answer) {
-                if (answer.tracks.items.length != 0) {
-                    return answer.tracks.items[0].id; //only taking top search result
-                };
-            });
-        }; */
-
     function createPlaylistAddJSON(songsIdList) {
-        console.log(songsIdList)
-        // let songsIdListJSON = [];
-        // let songsIdListJSONObj = {};
-
-        // songsIdList.forEach(function (element) {
-        //     return songsIdListJSON.push("spotify:track:" + element);
-        // });
-        // songsIdListJSONObj = JSON.stringify({ "uris": songsIdListJSON });
-
-        // return new Promise(function (resolve, reject) {
-        //     resole(songsIdListJSONObj);
-        // });
-
         const formattedSongsList = {
             uris: []
         }
@@ -189,9 +133,6 @@ Song Artist: ${song.artist}`);
         $(".dateChanged").text(userDate);
 
 
-
-
-        // console.log("switched")
         for (i = 0; i < 100; i++) {
             $("#resultsTable").append('<tr><td class="song">' + songsList[i].title + '</td>' + '<td class="song">' + songsList[i].artist + '</td></tr>');
 
