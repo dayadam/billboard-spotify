@@ -10,12 +10,12 @@ $(document).ready(function () {
     $("#submit").on("click", function () {
         event.preventDefault();
 
-    getUserId()
-        .then(postPlaylist)
-        .then(billboardSearch)
-        .then(createSongIdList)
-        .then(createPlaylistAddJSON)
-        .then(addTracks)
+        getUserId()
+            .then(postPlaylist)
+            .then(billboardSearch)
+            .then(createSongIdList)
+            .then(createPlaylistAddJSON)
+            .then(addTracks)
     });
 
     function accessTokenCheckAndStore() {
@@ -61,20 +61,18 @@ $(document).ready(function () {
     };
 
     //$("#submit").on("click", function () {
-/*         event.preventDefault();
-        
+    /*         event.preventDefault();
+            
+    
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+    
+            });
+        }); */
 
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-
-        });
-    }); */
-
-    $<img src= 
-    songslist 
 
     function billboardSearch() {
         const genre = $("option:selected").val();
@@ -93,7 +91,7 @@ $(document).ready(function () {
     //"https://api.spotify.com/v1/search?query=Fergalicious%2BFergie&type=track&offset=0&limit=20"
     //`https://api.spotify.com/v1/search?q=${query}&type=track`
     async function createSongIdList(songsList) {
-        
+
         const songsIdList = await Promise.all(songsList.songs.map(function (song, i) {
             const title = encodeURI(song.title);
             //const artist = song.artist.split(" Featuring ").map(artist => encodeURI(artist)).join(", ");
@@ -102,7 +100,7 @@ $(document).ready(function () {
             const url = `https://api.spotify.com/v1/search?q=${title}%20${artist}&type=track`;
 
             return $.ajax({
-                url: url, 
+                url: url,
                 type: "GET",
                 headers: {
                     Authorization: 'Bearer ' + accessToken.access_token
@@ -112,7 +110,7 @@ $(document).ready(function () {
                     return answer.tracks.items[0].id;
                 } else {
                     console.log(`Song URL: ${url}.
-Song Number: ${i+1}
+Song Number: ${i + 1}
 Song Title: ${song.title}
 Song Artist: ${song.artist}`);
                 }
