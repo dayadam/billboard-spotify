@@ -14,6 +14,10 @@ getChart("hot-100", "2016-08-27", (err, chart) => {
   console.log(chart.songs[0].cover); // prints URL for Billboard cover image of top song for week of August 27, 2016
 });
 
-$("#submit").on("click", function() {
-  console.log("clicked");
+$(“#submit”).on(“click”, function () {
+  event.preventDefault();
+  const genre = $(“option:selected”).val();
+  console.log(genre);
+  const userDate = $(“input”).val();
+  console.log(userDate);
 });
