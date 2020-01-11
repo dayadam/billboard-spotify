@@ -4,11 +4,6 @@
 
 This is a client-side only web application that generates a playlist of the Billboard Hot 100 songs for a given date on a user's Spotify account. The application uses several AJAX requests in order to link the two APIs together. 
 
-## Table of Contents
-
-* [Installation](#installation)
-* [Built With](#built-with)
-
 ## Organization of the Application
 
 The application uses Bulma for the user interface. JQuery helps with AJAX requests and DOM manipulation. A custom made server handles the Billboard API requests. When the user submits a date, the application makes a request to the Billboard API to get the popular songs on that date. The application then gets Spotify's identification of those songs, and creates a playlist with those songs. Concurrency flows heavily through the application and is generally handled with promises. 
